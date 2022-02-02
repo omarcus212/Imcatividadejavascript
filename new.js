@@ -1,22 +1,30 @@
 'use strict'
 
+import { iniciarRang }from './rang.js';
 
 //atividade deixar o parabens verde e o cuidado vermelho e fazer um input ranger
 
-function camposvalidos(){
+/*function camposvalidos(){
     //a função reportValidity faz aparecer uma mensagem automatica na tela !
     return document.getElementById('formulario').reportValidity();
-}
-function calcularimc(altura, peso ){
+}*/
+
+const camposvalidos = () => document.getElementById('formulario').reportValidity();
+
+
+/*function calcularimc(altura, peso ){
     return peso / (altura * altura);
 
-}
+}*/
+
+  const calcularimc = (altura, peso) => peso/(altura*altura);
+
 function classificarimc(imc){
     let texto = ""
     if(imc <= 18.5){
         texto = ' e voce esta abaixo do peso'
     }else if(imc > 18.5 && imc <= 24.9){
-        texto = ' e voce esta com peso ideal '
+        texto = ' e voce esta com peso ideal, parabens'
     }else if(imc >= 25 && imc <= 29.9){
         texto = ' e voce esta levemente acima do peso '
     }else if(imc >= 30 && imc <= 34.9){
@@ -32,7 +40,7 @@ function classificarimc(imc){
    }
    return texto;
 }        
-    function mostrarResultado(){
+   const mostrarResultado =() => {
     //assim atribuímos o valor do elemento html à variável e capturamos o valor inserido na caixa de texto através do '.value'
     const nome = document.getElementById('nome').value;
     const altura = document.getElementById('altura').value;
@@ -53,6 +61,13 @@ else {
 }
 }
 
+
+
+
 document.getElementById('calcular').addEventListener('click', mostrarResultado);
 
 
+
+
+iniciarRang('altura')
+iniciarRang('peso');   
