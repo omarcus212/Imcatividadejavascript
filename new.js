@@ -7,12 +7,12 @@ function camposvalidos(){
     //a função reportValidity faz aparecer uma mensagem automatica na tela !
     return document.getElementById('formulario').reportValidity();
 }
-function calcularimc(){
-    return imc = peso / (altura * altura);
+function calcularimc(altura, peso ){
+    return peso / (altura * altura);
 
 }
 function classificarimc(imc){
-    let texto;
+    let texto = ""
     if(imc <= 18.5){
         texto = ' e voce esta abaixo do peso'
     }else if(imc > 18.5 && imc <= 24.9){
@@ -33,6 +33,7 @@ function classificarimc(imc){
    return texto;
 }        
     function mostrarResultado(){
+    //assim atribuímos o valor do elemento html à variável e capturamos o valor inserido na caixa de texto através do '.value'
     const nome = document.getElementById('nome').value;
     const altura = document.getElementById('altura').value;
     const peso = document.getElementById('peso').value;
@@ -42,7 +43,7 @@ function classificarimc(imc){
     //validando com funçoes peso e altura e nome pra ver se tem algo nos campos
     if(camposvalidos(nome,altura,peso)){
     const imc = calcularimc(altura, peso);
-    let texto;
+   
     let texto = classificarimc(imc);
     resultado.textContent = `${nome} Seu imc é de ${imc.toFixed(2)} ${texto}`
 
